@@ -1,0 +1,39 @@
+/*
+.c12-pagewrapper>.c12-page>.c12-basewrapper>.c12-base>.row>
+.col.pos$*12
+*/
+columns = 1..12;
+gutter = 20px;
+// width = 960px
+// for fluid grid
+width = 0;
+
+.c12
+	&-wrapper
+		position: relative;
+		margin: auto;
+		width: width ? (width / 12 * 2) : 16%;
+	&-base
+		position: relative;
+		margin-left: -250%;
+		width: 50%;
+		.row
+			clear: both;
+			float: left;
+			width: 100%;
+		.col
+			position: relative;
+			float: left;
+			margin: 0 -100% 0 0;
+			width: 100%;
+			padding: 0 (gutter / 2);
+			box-sizing: border-box;
+
+		for num in columns
+			.pos{num}
+				left: (num - 1) * 100%;
+
+		for num in columns
+			.split{num}
+				margin-right: -(num) * 100%;
+				width: num * 100%;
